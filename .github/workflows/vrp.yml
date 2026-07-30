@@ -1,0 +1,16 @@
+name: vrp
+on:
+  pull_request:
+  merge_group:
+jobs:
+  vrp-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: gate
+        run: |
+          if [ -f FAIL_GATE ]; then
+            echo gate-fail
+            exit 1
+          fi
+          echo gate-pass
